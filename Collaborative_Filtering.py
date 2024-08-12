@@ -3,13 +3,12 @@ import pandas as pd
 from scipy.sparse import csr_matrix
 from sklearn.neighbors import NearestNeighbors
 
-data = pd.read_csv('Data/book_Rating_095.csv')
+data = pd.read_csv('Data/new_book_Rating_095.csv')
 print(data.head())
 
 # Check null
 data.isnull().sum()
 
-rating_count = data.groupby('User_id').count()['review/score'].sort_values(ascending=False)
 book_features_df = data.pivot_table(index='User_id', columns='Title', values='review/score').fillna(0)
 
 
